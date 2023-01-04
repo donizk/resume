@@ -10,7 +10,7 @@ jobs:
       - name: Set up Git repository
         uses: actions/checkout@v2
       - name: Compile LaTeX
-        run: mkdir _build && latexmk -pdf -outdir=_build main.tex
+        run: mkdir _build && latexmk -pdf -outdir=_build resume.tex
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -28,8 +28,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} 
-          asset_path: _build/main.pdf
-          asset_name: main.pdf
+          asset_path: _build/resume.pdf
+          asset_name: resume.pdf
           asset_content_type: pdf
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.2.2
